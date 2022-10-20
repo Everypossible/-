@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .flex-container {
+        display: flex;
+      }
+      #box1 {
+        width: 100px;
+        height: 100px;
+        padding: 20px;
+        background-color: rgb(194, 37, 110);
+        background-clip: content-box;
+        border: 10px dashed rgba(28, 220, 101, 0.5);
+        border-radius: 20%;
+        box-shadow: 0 0 10px 10px rgba(21, 21, 207, 1);
+        outline: 2px solid yellow;
+      }
+      .background-gradient-test {
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(to right, #fb3 30%, #58a 30%);
+        background-size: calc(20%) 100%;
+      }
+      #box3 {
+        margin-top: 50px;
+        background-color: #fb3;
+        width: 200px;
+        height: 100px;
+        border-radius: 50%;
+      }
+      #box4 {
+        margin: 10px;
+        background-color: aqua;
+        height: 200px;
+        width: 100px;
+        border-radius: 50px / 50px;
+      }
+      .picture {
+        margin-top: 10px;
+        background-color: aquamarine;
+        width: 150px;
+        height: 150px;
+        /* rotate: 45deg; */
+        overflow: hidden;
+      }
+      .picture > img {
+        max-width: 100%;
+        clip-path: polygon(0 50%, 50% 100%, 100% 50%, 50% 0);
+        transform: translate(0, 25%) scale(1.42);
+        /* transform: rotate(-45deg) scale(1.42); */
+      }
+      .corner {
+        width: 200px;
+        height: 100px;
+        background-color: #58a;
+        background: linear-gradient(-45deg, transparent 15px, #58a 0) right,
+          linear-gradient(45deg, transparent 15px, #655 0) left;
+          background-size: 50% 100%;
+          background-repeat: no-repeat;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div class="flex-container">
+        <div id="box1"></div>
+        <div class="background-gradient-test"></div>
+        <div id="box3"></div>
+        <div id="box4"></div>
+        <div class="picture">
+          <img
+            src="https://ts1.cn.mm.bing.net/th/id/R-C.3e6cc249b885967380bd0e910be0fac1?rik=GdIwDruY%2b0YDKA&riu=http%3a%2f%2fimg.fotomen.cn%2f2012%2f10%2fgl03.jpg&ehk=Fr5xXtTgW4b2uoJ3kTgyBY9i3YppkaTN4%2fE2b4vuNXU%3d&risl=&pid=ImgRaw&r=0"
+            alt=""
+          />
+        </div>
+      </div>
+      <div>
+        <div class="corner"></div>
+      </div>
+    </div>
+  </body>
+</html>

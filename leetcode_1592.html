@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {string} text
+       * @return {string}
+       */
+      var reorderSpaces = function (text) {
+        let stringLength = text.length;
+        let spaceNumber = 0;
+        let res = "";
+        for (let i = 0; i < stringLength; i++) {
+          if (text.charAt(i) === " ") {
+            spaceNumber++;
+          }
+        }
+        console.log(spaceNumber);
+        let words = [];
+        text.split(" ").forEach((item) => {
+          if(item.length > 0) words.push(item);
+        });
+        let wordNumber = words.length;
+        console.log(wordNumber);
+        let avgSpace = Math.floor(spaceNumber / (wordNumber - 1));
+        console.log(spaceNumber);
+        console.log(wordNumber)
+        console.log(2 % 0);
+        let last = spaceNumber % (wordNumber - 1);
+        console.log(last)
+        for (let i = 0; i < stringLength; i++) {
+          if (text.charAt(i) !== " ") {
+            res = res + text.charAt(i);
+          }
+          if (
+            text.charAt(i) !== " " &&
+            text.charAt(i + 1) === " " &&
+            wordNumber > 1
+          ) {
+            // res = res + text.charAt(i);
+            for (let i = 0; i < avgSpace; i++) {
+              res = res + " ";
+            }
+            wordNumber--;
+          }
+        }
+        for (let i = 0; i < last; i++) {
+          res = res + " ";
+        }
+        return res;
+      };
+      console.log(reorderSpaces("  hello"));
+    </script>
+  </body>
+</html>

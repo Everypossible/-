@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #app {
+        font-size: 30px;
+      }
+      input {
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" value="" id="myinput" oninput="change(value)" />
+      <div id="output"></div>
+    </div>
+    <script>
+        
+        function isObject(data) {
+            if(typeof data !== "object" || data === null) return false;
+            return true;
+        }
+        function reactive(data) {
+            if(isObject(data)){
+                return new Proxy(data, {
+                    get(target, key) {
+                        return target[key];
+                    },
+                    set(target, key, value){
+                        target[key] = value;
+                        changeOut();
+                        return true;
+                    }
+                });
+            }
+        }
+        const obj = reactive({inputValue: ""});
+        function change(data){
+            obj.inputValue = data;
+            // output.innerHTML = data;
+        }
+        function changeOut() {
+            output.innerHTML = obj.inputValue;
+        }
+    </script>
+  </body>
+</html>

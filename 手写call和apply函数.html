@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Function.prototype.myCall = function(context){
+            context = context ? Object(context) : window;
+            context.fn = this;
+            const args = [...arguments].splice(1);
+            const res = context.fn(...args);
+            delete context.fn;
+            // 这样子可以执行fn函数，但是并没有设置this指向context
+            // const res = this(...args);
+            return res;
+        }
+        function fn(a, b) {
+            console.log(a);
+            console.log(b);
+            console.log(this);
+        }
+        const res = fn.myCall({a: 2}, 10, 20);
+
+        // call和apply函数的区别仅仅是 call函数参数是一个参数列表，而apply参数是一个类数组
+        Function.prototype.myApply = function(context, arr){
+            context = context ? Object(context) : window;
+            // 设置 this 指向
+            context.fn = this;
+            let res = null;
+            if(!arr){
+                res = context.fn();
+            } else {
+                res = context.fn(...arr);
+            }
+            delete context.fn;
+            return res;
+        }
+        fn.myApply({a: 2}, [10, 20]);
+    </script>
+</body>
+</html>
