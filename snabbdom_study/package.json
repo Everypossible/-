@@ -1,0 +1,17 @@
+{
+  "name": "snabbdom_study",
+  "version": "1.0.0",
+  "description": "",
+  "main": "snabbdom_test.js",
+  "type": "module",
+  "scripts": {
+    "dev": "parcel snabbdom_test.html --open",
+    "build": "parcel build snabbdom_test.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "snabbdom": "^3.5.1"
+  }
+}
